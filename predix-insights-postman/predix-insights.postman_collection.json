@@ -1,0 +1,2786 @@
+{
+	"info": {
+		"name": "predix-insights",
+		"_postman_id": "2057cf5e-867e-8c09-f839-4446c900a8b8",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "UAA",
+			"item": [
+				{
+					"name": "UAA token",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{uaaClient}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{uaaClientSecret}}",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{uaaIssuerId}}?grant_type=client_credentials",
+							"host": [
+								"{{uaaIssuerId}}"
+							],
+							"query": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"equals": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "dags",
+			"item": [
+				{
+					"name": "dags",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/dags",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dags",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "metadata",
+									"value": "{\"name\": \"dag1\" }",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"value": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/dags",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dag",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/dags/{{current_dag_name}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dags",
+								"{{current_dag_name}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dag",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/dags/{{current_dag_name}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dags",
+								"{{current_dag_name}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update dag",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "metadata",
+									"value": "{ \"name\": \"dag1\" }",
+									"type": "text"
+								},
+								{
+									"key": "file1",
+									"type": "file",
+									"value": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/dags/{{current_dag_name}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dags",
+								"{{current_dag_name}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deploy dag",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/dags/{{current_dag_name}}/deploy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dags",
+								"{{current_dag_name}}",
+								"deploy"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "dagruns",
+			"item": [
+				{
+					"name": "dags",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/dags/statusall",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dags",
+								"statusall"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dag",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/dags/status/{{current_dag_name}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dags",
+								"status",
+								"{{current_dag_name}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "runs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/dags/status/{{current_dag_name}}/runs",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dags",
+								"status",
+								"{{current_dag_name}}",
+								"runs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "run",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/dags/status/{{current_dag_name}}/runs/{{current_dag_run_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dags",
+								"status",
+								"{{current_dag_name}}",
+								"runs",
+								"{{current_dag_run_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tasks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "metadata",
+									"value": "{ \"name\": \"dag1\" }",
+									"type": "text"
+								},
+								{
+									"key": "file1",
+									"type": "file",
+									"value": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/dags/status/{{current_dag_name}}/tasks",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dags",
+								"status",
+								"{{current_dag_name}}",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tasks/run",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "metadata",
+									"value": "{ \"name\": \"dag1\" }",
+									"type": "text"
+								},
+								{
+									"key": "file1",
+									"type": "file",
+									"value": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/dags/status/{{current_dag_name}}/tasks/runs/{{current_dag_run_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dags",
+								"status",
+								"{{current_dag_name}}",
+								"tasks",
+								"runs",
+								"{{current_dag_run_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "task",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "metadata",
+									"value": "{ \"name\": \"dag1\" }",
+									"type": "text"
+								},
+								{
+									"key": "file1",
+									"type": "file",
+									"value": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/dags/status/{{current_dag_name}}/tasks/{{current_dag_task_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dags",
+								"status",
+								"{{current_dag_name}}",
+								"tasks",
+								"{{current_dag_task_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "task/run",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "metadata",
+									"value": "{ \"name\": \"dag1\" }",
+									"type": "text"
+								},
+								{
+									"key": "file1",
+									"type": "file",
+									"value": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/dags/status/{{current_dag_name}}/tasks/{{current_dag_task_id}}/runs/{{current_dag_run_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dags",
+								"status",
+								"{{current_dag_name}}",
+								"tasks",
+								"{{current_dag_task_id}}",
+								"runs",
+								"{{current_dag_run_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "dependencies",
+			"item": [
+				{
+					"name": "dependencies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "metadata",
+									"value": "{\"type\":\"CONFIGURATION\"}",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"value": "",
+									"type": "file"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/dependencies/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dependencies",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dependency",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "metadata",
+									"value": "{\"type\":\"CONFIGURATION\"}",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"value": "",
+									"type": "file"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/dependencies/{{current_dependency}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dependencies",
+								"{{current_dependency}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dependency",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "metadata0",
+									"value": "{\"type\":\"conf\"}",
+									"type": "text"
+								},
+								{
+									"key": "file0",
+									"type": "file",
+									"value": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/dependencies/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dependencies",
+								""
+							]
+						},
+						"description": "Type can be CONFIGURATION or LIBRARY. POST JSON files for best tests. "
+					},
+					"response": []
+				},
+				{
+					"name": "dependencies",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "metadata0",
+									"value": "{\"type\":\"conf\"}",
+									"type": "text"
+								},
+								{
+									"key": "file0",
+									"value": "",
+									"type": "file"
+								},
+								{
+									"key": "metadata1",
+									"value": "{\"type\":\"lib\"}",
+									"type": "text"
+								},
+								{
+									"key": "file1",
+									"value": "",
+									"type": "file"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/dependencies/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dependencies",
+								""
+							]
+						},
+						"description": "Type can be CONFIGURATION or LIBRARY. POST JSON files for best tests. \n\nMultiple dependencies can be added by adding to header sequence\n"
+					},
+					"response": []
+				},
+				{
+					"name": "deploy dependencies",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/dependencies/deploy/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dependencies",
+								"deploy",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deploy dependency",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/dependencies/deploy/{{current_dependency}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dependencies",
+								"deploy",
+								"{{current_dependency}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dependency",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/dependencies/{{current_dependency}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dependencies",
+								"{{current_dependency}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "flow-templates",
+			"item": [
+				{
+					"name": "flow-templates",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flow-templates",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-templates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "flow-template",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flow-templates/{{current_flow-template}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-templates",
+								"{{current_flow-template}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "flow-template analytic file",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flow-templates/{{current_flow-template}}/download",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-templates",
+								"{{current_flow-template}}",
+								"download"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "flow-template (upload analytic file)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "metadata",
+									"value": "{\"version\": \"1.0\",   \"user\": \"user\",   \"name\": \"app3\",   \"description\": \"desc\",   \"type\": \"SPARK_JAVA\" , \"tags\":[\"tag1:val1\", \"tag2:val2\"]}",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"value": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flow-templates",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-templates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "flow-template (provide analytic file path)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"version\": \"1.0\",   \n\t\"user\": \"user\",   \n\t\"name\": \"app3\",   \n\t\"blobPath\": \"template analytic file path\",    \n\t\"description\": \"desc\",   \n\t\"type\": \"SPARK_JAVA\" , \n\t\"tags\":[\"tag1:val1\", \"tag2:val2\"]\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flow-templates",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-templates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "flow-template",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flow-templates/{{current_flow-template}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-templates",
+								"{{current_flow-template}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "flows by template",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flow-templates/{{current_flow-template}}/flows",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-templates",
+								"{{current_flow-template}}",
+								"flows"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "flow by template and id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flow-templates/{{current_flow-template}}/flows/{{current_flow}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-templates",
+								"{{current_flow-template}}",
+								"flows",
+								"{{current_flow}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create flow by template (upload flow config files)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "metadata",
+									"value": "{\"name\": \"job1\",\"description\":\"desc\" ,\"sparkArguments\": {\"applicationArgs\": [\"200000\"],\"className\": \"org.apache.spark.examples.SparkPi\"},\"tags\":[\"tag1:val1\",\"tag2:val2\"]\n}",
+									"type": "text"
+								},
+								{
+									"key": "file1",
+									"type": "file",
+									"value": ""
+								},
+								{
+									"key": "file2",
+									"type": "file",
+									"value": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flow-templates/{{current_flow-template}}/flows",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-templates",
+								"{{current_flow-template}}",
+								"flows"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create flow by template (provide flow config folder path)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"job1\",\n\t\"sparkArguments\": {\n\t\t\"applicationArgs\": [\"200000\"],\n\t\t\"className\": \"org.apache.spark.examples.SparkPi\"\n\t},\n\t\"tags\":[\"tag1:val1\",\"tag2:val2\"]\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flow-templates/{{current_flow-template}}/flows",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-templates",
+								"{{current_flow-template}}",
+								"flows"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "launch flow by template and id",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Predix-Zone-id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flow-templates/{{current_flow-template}}/flows/{{current_flow}}/launch",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-templates",
+								"{{current_flow-template}}",
+								"flows",
+								"{{current_flow}}",
+								"launch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "flow by template and id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flow-templates/{{current_flow-template}}/flows/{{current_flow}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-templates",
+								"{{current_flow-template}}",
+								"flows",
+								"{{current_flow}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tags for flow-templates",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flow-templates//{{current_flow-template}}/tags",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-templates",
+								"",
+								"{{current_flow-template}}",
+								"tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "save tags for flow-templates",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"tag3:val3\",\"tag4:val4\"]"
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flow-templates//{{current_flow-template}}/tags",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-templates",
+								"",
+								"{{current_flow-template}}",
+								"tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tags for flow",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flow-templates/{{current_flow-template}}/flows/{{current_flow}}/tags",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-templates",
+								"{{current_flow-template}}",
+								"flows",
+								"{{current_flow}}",
+								"tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "save tags for flow",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"tag3:val3\", \"tag4:val4\"]"
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flow-templates/{{current_flow-template}}/flows/{{current_flow}}/tags",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-templates",
+								"{{current_flow-template}}",
+								"flows",
+								"{{current_flow}}",
+								"tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update flow-template: new zip",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "metadata",
+									"value": "{\"version\": \"1.0\",   \"user\": \"user\",   \"name\": \"app3\",   \"description\": \"desc\",   \"type\": \"SPARK_JAVA\" , \"tags\":[\"tag1:val1\", \"tag2:val2\"]}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"value": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flow-templates/{{current_flow-template}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-templates",
+								"{{current_flow-template}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update flow-template: changes spark arguments",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"sparkArguments\": {\n\t\t\"applicationArgs\": [\"200000\"],\n\t\t\"className\": \"org.apache.spark.examples.SparkPi\"\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flow-templates/{{current_flow-template}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-templates",
+								"{{current_flow-template}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update flow: change spark args",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"sparkArguments\": {\n\t\t\"applicationArgs\": [\"20\"],\n\t\t\"className\": \"org.apache.spark.examples.SparkPi\"\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flow-templates/{{current_flow-template}}/flows/{{current_flow}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-templates",
+								"{{current_flow-template}}",
+								"flows",
+								"{{current_flow}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "flow config file by template and flow id",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"value": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flow-templates/{{current_flow-template}}/flows/{{current_flow}}/config",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-templates",
+								"{{current_flow-template}}",
+								"flows",
+								"{{current_flow}}",
+								"config"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "flow config file by template and flow id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flow-templates/{{current_flow-template}}/flows/{{current_flow}}/config?file={{file_name}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-templates",
+								"{{current_flow-template}}",
+								"flows",
+								"{{current_flow}}",
+								"config"
+							],
+							"query": [
+								{
+									"key": "file",
+									"value": "{{file_name}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "flow config file by template and flow id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flow-templates/{{current_flow-template}}/flows/{{current_flow}}/config?file={{file_name}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-templates",
+								"{{current_flow-template}}",
+								"flows",
+								"{{current_flow}}",
+								"config"
+							],
+							"query": [
+								{
+									"key": "file",
+									"value": "{{file_name}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list of flow config files by template and flow id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flow-templates/{{current_flow-template}}/flows/{{current_flow}}/config",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-templates",
+								"{{current_flow-template}}",
+								"flows",
+								"{{current_flow}}",
+								"config"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "flows",
+			"item": [
+				{
+					"name": "create direct flow (upload analytic file)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "metadata",
+									"value": "{\"version\": \"1.0\",   \"user\": \"user\",   \"name\": \"directFlow\",   \"description\": \"desc\",   \"type\": \"SPARK_JAVA\" , \"tags\":[\"tag1:val1\", \"tag2:val2\"]}",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"value": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flows",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flows"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update direct flow by id (upload analytic file)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "metadata",
+									"value": "{\"description\": \"desc\",   \"tags\":[\"tag1:val1\", \"tag2:val2\"]}",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"value": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flows/{{current_flow}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flows",
+								"{{current_flow}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create template from direct flow",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flows/{{current_flow}}/create-template",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flows",
+								"{{current_flow}}",
+								"create-template"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "flow by id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flows/{{current_flow}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flows",
+								"{{current_flow}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "flows",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flows",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flows"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "flow by name",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flows/{{current_flow_name}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flows",
+								"{{current_flow_name}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "flow analytic file by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flows/{{current_flow}}/download",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flows",
+								"{{current_flow}}",
+								"download"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "launch flow by name",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flows/{{current_flow_name}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flows",
+								"{{current_flow_name}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "flow config file by flow id",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"value": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flows/{{current_flow}}/config",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flows",
+								"{{current_flow}}",
+								"config"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "flow config file by flow id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flows/{{current_flow}}/config?file={{file_name}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flows",
+								"{{current_flow}}",
+								"config"
+							],
+							"query": [
+								{
+									"key": "file",
+									"value": "{{file_name}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "flow config file by flow id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flows/{{current_flow}}/config?file={{file_name}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flows",
+								"{{current_flow}}",
+								"config"
+							],
+							"query": [
+								{
+									"key": "file",
+									"value": "{{file_name}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list of flow config files by flow id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/flows/{{current_flow}}/config",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flows",
+								"{{current_flow}}",
+								"config"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "instances",
+			"item": [
+				{
+					"name": "instances",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/instances/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"instances",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "instance",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/instances/{{current_instance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"instances",
+								"{{current_instance}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "stop instance",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/instances/{{current_instance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"instances",
+								"{{current_instance}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "instance containers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/instances/{{current_instance}}/containers/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"instances",
+								"{{current_instance}}",
+								"containers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "instance container logs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/instances/{{current_instance}}/containers/{{current_container}}/logs",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"instances",
+								"{{current_instance}}",
+								"containers",
+								"{{current_container}}",
+								"logs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "instance container log",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/instances/{{current_instance}}/containers/{{current_container}}/logs/stderr",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"instances",
+								"{{current_instance}}",
+								"containers",
+								"{{current_container}}",
+								"logs",
+								"stderr"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "instance submit logs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/instances/{{current_instance}}/submit-logs",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"instances",
+								"{{current_instance}}",
+								"submit-logs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "spark",
+			"item": [
+				{
+					"name": "application details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/instances/{{current_instance}}/sparkproxy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"instances",
+								"{{current_instance}}",
+								"sparkproxy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "executor details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/instances/{{current_instance}}/sparkproxy/{{attempt-id}}/executors",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"instances",
+								"{{current_instance}}",
+								"sparkproxy",
+								"{{attempt-id}}",
+								"executors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List of all stages for a given application",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/instances/{{current_instance}}/sparkproxy/{{attempt-id}}/stages",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"instances",
+								"{{current_instance}}",
+								"sparkproxy",
+								"{{attempt-id}}",
+								"stages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List of all attempts for the given stage",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/instances/{{current_instance}}/sparkproxy/{{attempt-id}}/stages/{{stage-id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"instances",
+								"{{current_instance}}",
+								"sparkproxy",
+								"{{attempt-id}}",
+								"stages",
+								"{{stage-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Stage attempt details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/instances/{{current_instance}}/sparkproxy/{{attempt-id}}/stages/{{stage-id}}/{{stage-attempt-id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"instances",
+								"{{current_instance}}",
+								"sparkproxy",
+								"{{attempt-id}}",
+								"stages",
+								"{{stage-id}}",
+								"{{stage-attempt-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List of all tasks for the given stage attempt",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Predix-Zone-Id",
+								"value": "{{Predix-Zone-Id}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/instances/{{current_instance}}/sparkproxy/{{attempt-id}}/stages/{{stage-id}}/{{stage-attempt-id}}/taskList",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"instances",
+								"{{current_instance}}",
+								"sparkproxy",
+								"{{attempt-id}}",
+								"stages",
+								"{{stage-id}}",
+								"{{stage-attempt-id}}",
+								"taskList"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "aada44c3-18a9-4901-98d9-a7dd140646df",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "b190299a-3ac1-46e1-95ac-8680150faaf8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

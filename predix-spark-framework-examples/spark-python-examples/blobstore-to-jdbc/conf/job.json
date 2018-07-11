@@ -1,0 +1,33 @@
+{
+  "RUNTIME_ENV": "/predix/adromeda/power-tenant/conf",
+  "jobClass": "connect.TestJob",
+  "eggPath": "connect-1.0.0-py2.7.egg",
+  "job_definition": {
+    "inputs": [
+      {
+        "name": "inputDS",
+        "id": "fileInputDS-1234567",
+        "provider": "json",
+        "parameters": {
+          "path": "s3://<BUCKET_HOST>/sample.json"
+        }
+      }
+    ],
+    "outputs": [
+      {
+          "name": "outputDS",
+          "id": "fileOutputDS-1234567",
+          "provider": "jdbc",
+          "parameters": {
+            "url": "jdbc:postgresql://<POSTGRES_HOST>:5432/postgres",
+            "user": "<PG_USER>",
+            "password": "<PG_PWD>",
+            "driver": "org.postgresql.Driver",
+            "dbtable": "sampletable"
+          }
+        }
+    ],
+    "language": "PYTHON",
+    "tenant": "d3cd3409-8c7d-4b71-91f1-63ea7adcd602"
+  }
+}

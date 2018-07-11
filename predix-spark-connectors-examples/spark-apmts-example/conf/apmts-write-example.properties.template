@@ -1,0 +1,16 @@
+# APM Timeseries UAA URL pertaining to APM Timeseries instance
+apm.token.uri=https://<UAA_HOST>/oauth/token/oauth/token?clientId=<UAA_CLIENTID>&clientSecret=<UAA_CLIENTSECRET>&grant_type=client_credentials&scope=<UAA_NEEDED_SCOPES>
+
+# APM Timeseries URL to query APM data & content-type that supports only json for now
+url=https://<APM_TIMESERIES_HOST>/v2/time_series
+Content-Type=application/json
+
+# Authorization token, no need to change this, it will use above token.uri to get the token and apply it automatically
+Authorization=Bearer ${apm.token}
+
+
+
+#APM Tenant Id
+Tenant=<TENANT_ID>
+
+outputTag=OO_Tag_Temperature_ID1

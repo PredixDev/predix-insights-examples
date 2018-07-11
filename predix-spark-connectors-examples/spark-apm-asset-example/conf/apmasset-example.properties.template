@@ -1,0 +1,24 @@
+# APM Asset UAA URL pertaining to APM Timeseries instance
+apm.token.uri=https://<UAA_HOST>/oauth/token?clientId=<UAA_CLIENTID>&clientSecret=<UAA_CLIENTSECRET>&username=<USERNAME>&password=<PASSWORD>
+
+# APM Asset URL to query APM data & content-type that supports only json for now
+url=https://<APM_TIMESERIES_HOST>/v2/time_series
+Content-Type=application/json
+
+# Authorization token, no need to change this, it will use above token.uri to get the token and apply it automatically
+Authorization=Bearer ${apm.token}
+#you can use above Authorizaton and apm.token.uri  property or use individual properties as below instead of creating apm.token.uri
+#if Authorization property is not there, connector will try to use below properties to get token 
+#userName=<USERNAME>
+#password=<PASSWORD>
+#tokenUrl=https://<UAA_HOST>/oauth/token
+#clientId=<UAA_CLIENTID>
+#clientSecret=<UAA_CLIENTSECRET>
+
+
+
+# Filter query to retrieve timeseries data from Predix Timseries Instance
+filter=assets=sourceKey%3DOO-CA-SIMUL-ASSET-ID1&tags=sourceKeys%3DOO_Tag_Temperature_ID1
+
+#APM Tenant Id
+Tenant=<TENANT_ID>

@@ -1,0 +1,85 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ge.predix</groupId>
+    	<artifactId>predix-spark-connectors-examples</artifactId>
+    	<version>1.0.5</version>
+	</parent>
+	<artifactId>spark-eventhub-ts-write-stream-example</artifactId>
+	<name>${project.artifactId}</name>
+	<description>This is an example to use predix eventhub write stream connector</description>
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<encoding>UTF-8</encoding>
+		<scala.tools.version>2.11</scala.tools.version>
+		<!-- Put the Scala version of the cluster -->
+		<scala.version>2.11.8</scala.version>
+    	<spark.version>2.1.0</spark.version>
+		<predix.connectors.version>2.0.0</predix.connectors.version>
+	</properties>
+
+	<dependencies>
+		<!-- Scala and Spark dependencies -->
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-library</artifactId>
+			<version>${scala.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-core_2.11</artifactId>
+			<version>2.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+    <dependency>
+        <groupId>org.apache.spark</groupId>
+        <artifactId>spark-sql_2.11</artifactId>
+        <version>${spark.version}</version>
+        <scope>provided</scope>
+    </dependency>
+	<dependency>
+		<groupId>org.apache.spark</groupId>
+		<artifactId>spark-streaming_${scala.tools.version}</artifactId>
+		<version>${spark.version}</version>
+		<scope>provided</scope>
+	</dependency>
+    <dependency>
+        <groupId>com.ge.predix</groupId>
+        <artifactId>predix-connectors-common</artifactId>
+        <version>${predix.connectors.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>com.ge.predix</groupId>
+        <artifactId>spark-eventhub-connector</artifactId>
+        <version>${predix.connectors.version}</version>
+    </dependency>
+	</dependencies>
+
+	<build>
+		<sourceDirectory>src/main/scala</sourceDirectory>
+		<testSourceDirectory>src/test/scala</testSourceDirectory>
+		<plugins>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <scalaVersion>${scala.version}</scalaVersion>
+                </configuration>
+            </plugin>
+		</plugins>
+	</build>
+
+
+</project>

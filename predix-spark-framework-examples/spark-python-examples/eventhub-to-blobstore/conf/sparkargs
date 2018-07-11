@@ -1,0 +1,14 @@
+{
+  "confs": {
+       "spark.hadoop.fs.s3a.endpoint": "https://bucket-a6e56f98-6db8-4463-bf91-fa2188f8af32.s3-us-west-2.amazonaws.com",
+       "spark.driver.extraJavaOptions": "-Dlog4j.debug=true -Dlog4j.configuration=log4j.properties",
+       "spark.executor.extraJavaOptions": "-Dlog4j.debug=true -Dlog4j.configuration=log4j.properties",
+       "spark.yarn.appMasterEnv.EVENTHUB_ENABLE_DEBUG": "true",
+       "spark.executorEnv.EVENTHUB_ENABLE_DEBUG": "true",
+       "spark.hadoop.fs.s3.impl": "org.apache.hadoop.fs.s3native.NativeS3FileSystem",
+       "spark.hadoop.fs.s3.awsAccessKeyId": <AWS_ACCESS_KEY_ID>,
+       "spark.hadoop.fs.s3.awsSecretAccessKey": <AWS_SECRET_ACCESS_KEY>",
+       "spark.arf.params": "{\"tenant\":\"<TENANT_ID>\",\"analyticName\":\"PREDIX-TS-EH-ALARM\",\"startTime\":\"1494658800000\",\"endTime\":\"1494745200000\",\"inputTag\":\"<INPUT_TAG1>\",\"inputTag2\":\"<INPUT_TAG2>\"}"
+   },
+   "frameworkName": "predix-spark-framework"
+}

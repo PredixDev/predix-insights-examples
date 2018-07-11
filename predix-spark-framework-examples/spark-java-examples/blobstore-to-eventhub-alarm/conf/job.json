@@ -1,0 +1,31 @@
+{
+  "job_definition": {
+    "inputs": [
+      {
+        "id": "readFrom-01",
+        "name": "readFrom",
+        "provider": "json",
+        "parameters": {
+          "path": "${predix.blobstore.url}"
+        }
+      }
+    ],
+    "language": "JAVA",
+    "outputs": [
+      {
+         "id": "writeTo-01",
+         "name": "writeTo",
+         "streaming": true,
+         "provider": "predix.stream.alarm",
+         "parameters": {
+           "url": "${predix.stream.alarm.sink}",
+           "Content-Type": "application/json",
+           "Authorization": "Bearer ${predix.stream.EH.token}",
+           "interval": 2000,
+           "offset-new":true,
+           "tenant": "${tenant}"
+         }
+      }
+    ]
+  }
+}

@@ -1,0 +1,2 @@
+{"taskId":"smartSignalTask_13","type":"updateAlarm","name":"gateway_alert","severity":3,"eventStart":1490304685000,"storageReceiveTime":1490304785000,"associatedMonitoredEntitySourceKey":"AVD-AUTOMATION-SEG3-ASSET-ID1"}
+{"taskId":"smartSignalTask_14","type":"createAlarm","name":"gateway_alert","severity":2,"eventStart":1490304885000,"storageReceiveTime":1490304985000,"associatedMonitoredEntitySourceKey":"AVD-AUTOMATION-SEG3-ASSET-ID2"}
