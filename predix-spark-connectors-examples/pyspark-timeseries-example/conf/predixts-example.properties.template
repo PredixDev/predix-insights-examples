@@ -1,0 +1,17 @@
+{
+# Predix Timeseries UAA URL pertaining to Predix Timeseries instance
+"predix.ts.token.uri": "https://<UAA_HOST>/oauth/token/oauth/token?clientId=<UAA_CLIENTID>&clientSecret=<UAA_CLIENTSECRET>&grant_type=client_credentials&scope=<UAA_NEEDED_SCOPES>",
+
+# Predix Timeseries URL to query timeseries data & content-type that supports only json for now
+"url": "https://<PREDIX_TIMESERIES_HOST>/v1/datapoints",
+"Content-Type": "application/json",
+
+# Authorization token, no need to change this, it will use above token.uri to get the token and apply it automatically
+"Authorization": "Bearer ${predix.ts.token}",
+
+# Predix Zone Id of timeseries which we want to query from
+"tenant": "0694ad33-3977-4b27-9c14-82acf07b3da1",
+
+# Filter query to retrieve timeseries data from Predix Timseries Instance
+"interval": "2000"
+}

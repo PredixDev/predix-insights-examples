@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.ge.arf</groupId>
+  <artifactId>blobstore-to-eventhub-alarm</artifactId>
+  <version>0.0.1</version>
+  <properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<encoding>UTF-8</encoding>
+		<spark.sql.version>2.1.0</spark.sql.version>
+        <arf.version>2.0.0</arf.version>
+  </properties>
+  <dependencies>
+		<dependency>
+			<groupId>com.ge.arf</groupId>
+			<artifactId>arf-runtime-api</artifactId>
+			<version>${arf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-sql_2.11</artifactId>
+			<version>${spark.sql.version}</version>
+		</dependency>
+  </dependencies>
+</project>

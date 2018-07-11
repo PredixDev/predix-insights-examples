@@ -1,0 +1,13 @@
+Posted on February 2, 2016 by Itamar Haber
+connecting spark and redis: a detailed look
+
+The spark-redis package on github is our first step in the Spark-Redis journey. Spark has captured the public imagination around the real-time possibilities of big data and we1 hope to contribute in making this possibility a reality.
+
+The spark-redis package is a Redis connector for Apache Spark that provides read and write access to all of Redis' core data structures (RcDS) as RDDs (Resilient Distributed Datasets, not to be confused with RDBs).
+
+I thought it would be fun to take the new connector for a test run and show off some of its capabilities. The following is my journey's log. First things first...
+
+setting up
+There are a few prerequisites you need before you can actually use spark-redis, namely: Apache Spark, Scala, Jedis and Redis. While the package specifically states version requirements for each piece, I actually used later versions with no discernible ill effects (v1.5.2, v2.11.7, v2.8 and unstable respectively).
+
+I fumbled quite a lot trying to get it all working. Just after I finished putting everything in place, friend and fellow Redis-eur Tim Spann @PaaSDev published a step-by-step on "Setting up a Standalone Apache Spark Cluster" over at @DZone. That should get you through the hairiest parts if you're on Ubuntu like me.

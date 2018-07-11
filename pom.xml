@@ -1,0 +1,14 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ge.predix</groupId>
+    <artifactId>predix-insights-examples</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.5</version>
+    <modules>
+        <module>predix-spark-quickstart-examples</module>
+        <module>predix-spark-framework-examples</module>
+        <module>predix-spark-connectors-examples</module>
+    </modules>
+</project>

@@ -1,0 +1,30 @@
+{
+  "job_definition": {
+    "inputs": [
+      {
+        "id": "readFrom-01",
+        "name": "readFrom",
+        "streaming": true,
+        "provider": "predix.stream",
+        "parameters": {
+          "url": "${predix.stream.gm.source}",
+          "Content-Type": "application/json",
+          "Authorization": "Bearer ${predix.stream.EH.token}",
+          "interval": 2000,
+          "offset-new":true
+        }
+      }
+    ],
+    "language": "JAVA",
+    "outputs": [
+      {
+          "id": "writeTo-01",
+          "name": "writeTo",
+          "provider": "json",
+          "parameters": {
+            "path": "${predix.blobstore.url}"
+          }
+      }
+    ]
+  }
+}
