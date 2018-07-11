@@ -1,7 +1,0 @@
-
-# AWS User Credentials
-spark.hadoop.fs.s3.awsAccessKeyId=<AWS_ACCESS_KEY_ID>
-spark.hadoop.fs.s3.awsSecretAccessKey=<AWS_SECRET_ACCESS_KEY>
-
-# Specify blob filesystem being used
-spark.hadoop.fs.s3.impl=org.apache.hadoop.fs.s3native.NativeS3FileSystem

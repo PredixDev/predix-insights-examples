@@ -1,4 +1,0 @@
-{
-  "fileName": "spark-java-example-0.0.1.jar",
-   "className": "org.apache.spark.examples.JavaSparkPi"
-}

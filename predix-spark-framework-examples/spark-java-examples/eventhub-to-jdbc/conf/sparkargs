@@ -1,6 +1,0 @@
-{
-    "confs": {
-        "spark.arf.params": "{}"
-    },
-    "frameworkName": "arf"
-}
